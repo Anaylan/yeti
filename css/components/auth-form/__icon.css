@@ -1,0 +1,20 @@
+.auth-form__icon {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.auth-form__icon_error {
+    color: var(--error);
+    opacity: 1;
+}
+
+.auth-form__icon_success {
+    color: var(--success);
+    opacity: 1;
+}

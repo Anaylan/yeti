@@ -1,0 +1,30 @@
+.auth-form__submit {
+    background: #495057;
+    color: white;
+    border: none;
+    border-radius: calc(var(--border-radius) / 2);
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.5px;
+}
+
+.auth-form__submit:hover {
+    background: #343a40;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form__submit:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.auth-form__submit:disabled {
+    background: #adb5bd;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}

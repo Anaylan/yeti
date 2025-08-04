@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Owl | Login</title>
+    <link type="text/css" rel="stylesheet" href="./css/normalize.css">
+    <link type="text/css" rel="stylesheet" href="./css/utilities.css">
+    <link type="text/css" rel="stylesheet" href="./css/global.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/auth-form/auth-form.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/auth-form/__title.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/auth-form/__field.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/auth-form/__input.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/auth-form/__label.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/auth-form/__error.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/auth-form/__button-group.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/auth-form/__submit.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/auth-form/__icon.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/alert/alert.css">
+    <link type="text/css" rel="stylesheet" href="./css/components/alert/__close.css">
+</head>
+
+<body>
+
+    <div class="page__wrapper">
+        <main class="page__content position-relative" aria-label="Authorization form">
+            <div class="auth-form-container owl-open">
+                <form id="auth-form" class="auth-form" action="/" method="GET" autocomplete="on">
+                    <h1 class="auth-form__title mt-1">
+
+                        <span style="color: #8d6a4c;">O</span>w<span style="color: #79d0e4;">l</span>
+                    </h1>
+                    <div class="auth-form__field">
+                        <input id="email" class="auth-form__input" type="email" name="email" placeholder="" required>
+                        <label for="email" class="auth-form__label">Email</label>
+                        <div class="auth-form__error" id="email-error"></div>
+                    </div>
+                    <div class="auth-form__field">
+                        <input id="password" class="auth-form__input" type="password" name="password" placeholder=""
+                            required autocomplete="current-password" aria-required="true">
+                        <label for="password" class="auth-form__label">Password</label>
+                        <div class="auth-form__error" id="password-error"></div>
+                    </div>
+                    <div class="auth-form__button-group">
+                        <button class="auth-form__submit" type="submit" aria-label="Войти в систему">
+                            Sign in
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <div class="alert alert--success" id="alert">
+        <div class="alert__message">You are logged in</div>
+        <button id="close-btn" class="alert__close" aria-label="Закрыть уведомление">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+            </svg>
+        </button>
+    </div>
+
+    <script async src="./alert.js"></script>
+    <script async src="./validator.js"></script>
+    <script>
+        var pwdField = document.querySelector("#password");
+        var authContainer = document.querySelector('.auth-form-container')
+        pwdField.onfocus = (event) => {
+            authContainer.classList.replace('owl-open', 'owl-close');
+        }
+
+        pwdField.onblur = (event) => {
+            authContainer.classList.replace('owl-close', 'owl-open');
+        }
+    </script>
+    <script>
+        var form = document.querySelector('#auth-form');
+        var alert = new Alert(document.querySelector('#alert'));
+
+        form.onsubmit = (event) => {
+            event.preventDefault();
+
+            var validator = new StringValidator();
+            validator.min(6);
+
+            const formData = new FormData(form);
+            const errors = new Map();
+
+            for (const [key, value] of formData.entries()) {
+                errors.set(key, validator.validate(value))
+            }
+
+            document.querySelectorAll('.auth-form__error').forEach(el => {
+                el.textContent = '';
+                el.classList.remove('auth-form__error_visible');
+            });
+
+            let hasErr = false;
+            for (const [key, value] of errors.entries()) {
+                if (value.length > 1) {
+                    hasErr = true;
+                    let field = document.getElementById(`${key}-error`);
+                    field.textContent = value;
+                    field.classList.add('auth-form__error_visible');
+                }
+            }
+
+            if (!hasErr) {
+                alert.show();
+                form.reset();
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+.auth-form__input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #dee2e6;
+    border-radius: calc(var(--border-radius) / 2);
+    background-color: transparent !important;
+    font-size: 1rem;
+    transition: var(--transition);
+    padding-right: 2.5rem;
+    outline: none;
+}
+
+
+.auth-form__input:focus {
+    border-color: #adb5bd;
+}
+
+.auth-form__input_state_error {
+    border-color: var(--error);
+    padding-right: 2.5rem;
+}
+
+.auth-form__input_state_success {
+    border-color: var(--success);
+}
+
+.auth-form__input:not(:placeholder-shown)+.auth-form__label,
+.auth-form__input:focus+.auth-form__label {
+    top: -0.7rem;
+    left: 0.5rem;
+    font-size: 0.85rem;
+    padding: 0 0.5rem;
+    color: var(--text-secondary);
+}

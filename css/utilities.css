@@ -1,0 +1,19 @@
+.mt-1 {
+    margin-top: 0.5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.possition-relative {
+    position: relative;
+}

@@ -1,0 +1,9 @@
+.auth-form__label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: #6c757d;
+    pointer-events: none;
+    transition: var(--transition);
+    background-color: var(--bg-primary);
+}
