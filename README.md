@@ -32,7 +32,6 @@ alert.js                  # alert library
 ### Browser Compatibility
 - **Challenge**: Supporting Safari 14+ without build tools
 - **Solution**:
-  - Feature detection for CSS variables
   - Manual vendor prefixes for Flexbox
 
 ### Development Experience
