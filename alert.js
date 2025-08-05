@@ -1,17 +1,12 @@
 /**
  * @class
  * @param {HTMLElement} element - Alert container element
- * @param {Object} [options] - Configuration options
- * @param {number} [options.delay=5000] - Auto-close delay in milliseconds
- * @param {string} [options.closeBtn='.alert__close'] - Close button CSS selector
- * @param {boolean} [options.autoClose=true] - Enable auto-close
- * @param {Function} [options.onOpen] - Callback when alert opens
- * @param {Function} [options.onClose] - Callback when alert closes
+ * @param {Object} options - Configuration options
  */
 function Alert(element, options) {
     /** @type {HTMLElement} */
     this.element = element;
-    
+
     /** @type {Object} */
     this.options = {
         delay: 5000,
@@ -30,7 +25,7 @@ function Alert(element, options) {
 
     /** @type {boolean} */
     this.isOpen = false;
-    
+
     /** @type {?number} */
     this.timeoutId = null;
 
@@ -52,7 +47,7 @@ Alert.prototype.show = function () {
     if (this.isOpen) return;
 
     this.isOpen = true;
-    this.element.classList.add('alert--show');
+    this.element.classList.add('alert_show');
 
     // Execute open callback
     if (typeof this.options.onOpen === 'function') {
@@ -74,7 +69,7 @@ Alert.prototype.close = function () {
     if (!this.isOpen) return;
 
     this.isOpen = false;
-    this.element.classList.remove('alert--show');
+    this.element.classList.remove('alert_show');
 
     if (this.timeoutId) {
         clearTimeout(this.timeoutId);
@@ -106,12 +101,12 @@ Alert.prototype.setMessage = function (message) {
 Alert.prototype.setType = function (type) {
     var classList = this.element.className.split(' ');
     for (var i = classList.length - 1; i >= 0; i--) {
-        if (classList[i].indexOf('alert--') === 0) {
+        if (classList[i].indexOf('alert_') === 0) {
             classList.splice(i, 1);
         }
     }
 
-    classList.push('alert--' + type);
+    classList.push('alert_' + type);
     this.element.className = classList.join(' ');
     return this;
 };
@@ -127,21 +122,4 @@ Alert.prototype.updateOptions = function (newOptions) {
         }
     }
     return this;
-};
-
-/**
- * @static
- * @param {string} [selector='.alert'] - CSS selector for alerts
- * @param {Object} [options] - Shared options for all alerts
- * @returns {Alert[]} Array of Alert instances
- */
-Alert.prototype.initAll = function (selector, options) {
-    var elements = document.querySelectorAll(selector || '.alert');
-    var alerts = [];
-
-    for (var i = 0; i < elements.length; i++) {
-        alerts.push(new Alert(elements[i], options));
-    }
-
-    return alerts;
 };

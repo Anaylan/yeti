@@ -10,7 +10,6 @@
     outline: none;
 }
 
-
 .auth-form__input:focus {
     border-color: #adb5bd;
 }

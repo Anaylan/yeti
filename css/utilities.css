@@ -14,6 +14,23 @@
     gap: 1rem;
 }
 
-.possition-relative {
+.relative {
     position: relative;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
 }

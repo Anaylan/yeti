@@ -8,6 +8,12 @@
     width: 100%;
 }
 
+@-webkit-keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     20%, 60% { transform: translateX(-5px); }
@@ -15,5 +21,37 @@
 }
 
 .auth-form__field_state_error {
-    animation: shake 0.4s ease-in-out;
+    -webkit-animation: shake 0.4s ease-in-out;
+            animation: shake 0.4s ease-in-out;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #6c757d;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+.password-toggle:hover {
+    opacity: 1;
+}
+
+.password-toggle:focus {
+    outline: none;
+    color: var(--text-primary);
+}
+
+.eye-icon {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
 }

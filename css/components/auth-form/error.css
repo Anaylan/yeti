@@ -4,7 +4,6 @@
     margin-top: 0.25rem;
     opacity: 0;
     max-height: 0;
-    /* overflow: hidden; */
     transform: translateY(-10px);
     transition: var(--transition);
 }
@@ -12,6 +11,8 @@
 .auth-form__error_visible {
     display: block;
     opacity: 1;
+    max-height: -webkit-max-content;
+    max-height: -moz-max-content;
     max-height: max-content;
     transform: translateY(0);
 }
