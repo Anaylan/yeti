@@ -3,7 +3,7 @@
 ### Core Principles
 1. **BEM Methodology**  
    - Strict modularity is implemented: each component (example `search-form`, `card`) is autonomous
-   - The naming scheme `block__element--modifier` is used (example: `.header__link--active`)  
+   - The naming scheme `block__element_modifier` is used (example: `.header__link_active`)  
    - Styles almost isolated 
 2. **Zero-Build Approach**  
    - Project works without buildtools (Webpack/Vite/Gulp)  
