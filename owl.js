@@ -7,8 +7,6 @@ function Owl(state, classPrefix, container) {
 
     /** @type {HTMLElement} */
     this.container = container;
-
-    console.log(this.container)
 }
 
 /**

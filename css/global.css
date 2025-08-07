@@ -224,8 +224,8 @@ body::before {
     height: 0;
     overflow: hidden;
     background: 
-        url("/img/owl_open.png") no-repeat,
-        url("/img/owl_close.png") no-repeat,
-        url("/img/owl_half.png") no-repeat;
+        url("../img/owl_open.png") no-repeat,
+        url("../img/owl_close.png") no-repeat,
+        url("../img/owl_half.png") no-repeat;
     z-index: -1;
 }
