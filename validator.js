@@ -7,13 +7,14 @@ function FormValidator(conditions) {
 }
 
 FormValidator.prototype.validate = function (value) {
+    const errs = new Array();
     for (const condition of this.conditions) {
         const error = condition(value);
         if (error !== '') {
-            return error;
+            errs.push(error);
         }
     }
-    return '';
+    return errs;
 }
 
 FormValidator.prototype.test = function (condition) {
@@ -39,11 +40,10 @@ StringValidator.prototype.min = function (min) {
     return this;
 }
 
-
-StringValidator.prototype.max = function (max) {
+StringValidator.prototype.hasUppercase = function () {
     this.conditions.push((value) => {
-        if (value.length > max) {
-            return `Field must be no more than ${max} characters.`;
+        if (!/[A-Z]/.test(value)) {
+            return 'Field must contain at least one uppercase letter.';
         }
         return '';
     });
@@ -51,3 +51,46 @@ StringValidator.prototype.max = function (max) {
     return this;
 }
 
+StringValidator.prototype.hasNumber = function () {
+    this.conditions.push((value) => {
+        if (!/[0-9]/.test(value)) {
+            return 'Field must contain at least one number.';
+        }
+        return '';
+    });
+
+    return this;
+}
+
+StringValidator.prototype.hasSymbol = function () {
+    this.conditions.push((value) => {
+        if (!/[!@#$%^&*()_+={}\[\]:;"'<>,.?/`~-]/.test(value)) {
+            return 'Field must contain at least one symbol.';
+        }
+        return '';
+    });
+
+    return this;
+}
+
+StringValidator.prototype.max = function (max) {
+    this.conditions.push((value) => {
+        if (value.length > max) {
+            return `Field must be no more than ${max} characters.\n`;
+        }
+        return '';
+    });
+
+    return this;
+}
+
+StringValidator.prototype.isEmail = function () {
+    this.conditions.push((value) => {
+        if (!/^\S+@\S+\.\S+$/.test(value)) {
+            return 'Invalid email format.';
+        }
+        return '';
+    });
+
+    return this;
+}

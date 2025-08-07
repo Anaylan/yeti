@@ -11,7 +11,7 @@
     align-items: center;
     padding-bottom: 2rem;
     -webkit-animation: var(--fadeIn-animation);
-            animation: var(--fadeIn-animation);
+    animation: var(--fadeIn-animation);
 }
 
 .social-links {
@@ -23,15 +23,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 30px;
-    min-width: 20px;
+    max-height: 30px;
+    min-height: 20px;
     aspect-ratio: 1;
-    border-radius: 50%;
     transition: all 0.3s ease;
-}
-
-.social-icon > img {
-    color: var(--text-primary) !important;
+    fill: var(--text-primary) !important
 }
 
 .social-icon:hover {

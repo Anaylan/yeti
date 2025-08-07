@@ -215,3 +215,17 @@ body {
 .page__col {
     flex-direction: row;
 }
+
+body::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    background: 
+        url("/img/owl_open.png") no-repeat,
+        url("/img/owl_close.png") no-repeat,
+        url("/img/owl_half.png") no-repeat;
+    z-index: -1;
+}
