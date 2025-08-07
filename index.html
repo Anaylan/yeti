@@ -247,7 +247,7 @@
 
             let hasErr = false;
             for (const [key, value] of errors.entries()) {
-                if (value.length > 1) {
+                if (value.length > 0) {
                     hasErr = true;
                     let field = document.getElementById(`${key}-error`);
                     value.forEach((err) => {

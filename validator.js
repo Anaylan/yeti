@@ -86,7 +86,7 @@ StringValidator.prototype.max = function (max) {
 
 StringValidator.prototype.isEmail = function () {
     this.conditions.push((value) => {
-        if (!/^\S+@\S+\.\S+$/.test(value)) {
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
             return 'Invalid email format.';
         }
         return '';
