@@ -212,6 +212,21 @@ body {
     transform: translateY(-67%);
 }
 
+.owl_half::before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: calc(50% - 100px);
+    background: url("../img/owl_half.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: translateY(-67%);
+}
+
 .page__col {
     flex-direction: row;
 }

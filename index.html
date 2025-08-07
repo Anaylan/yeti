@@ -237,8 +237,8 @@
             const formData = new FormData(form);
             const errors = new Map();
 
-            errors.set('email', new StringValidator().min(1).isEmail().validate(formData.get('email')));
-            errors.set('password', new StringValidator().min(6).hasUppercase().hasNumber().hasSymbol().validate(formData.get('password')));
+            errors.set('email', new StringValidator().min(1).isEmail().validate(formData.get('email').trim()));
+            errors.set('password', new StringValidator().min(6).hasUppercase().hasNumber().hasSymbol().validate(formData.get('password').trim()));
 
             document.querySelectorAll('.auth-form__error').forEach(el => {
                 el.textContent = '';

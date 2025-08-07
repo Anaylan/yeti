@@ -16,9 +16,7 @@ Owl.prototype.setState = function (state) {
     if (this.state !== state) {
         var oldState = this.state;
         this.state = state;
-        console.log(this.container)
-        this.container.classList.replace(`${this.classPrefix}${oldState}`, `${this.classPrefix}${this.state}`)
-        console.log('🦉 State changed: ' + oldState + ' → ' + state);
+        this.container.classList.replace(`${this.classPrefix}${oldState}`, `${this.classPrefix}${this.state}`);
     }
 }
 
